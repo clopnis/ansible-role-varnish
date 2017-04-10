@@ -3,11 +3,13 @@
   apt:
     name: apt-transport-https
     state: installed
+    update_cache: yes
   when: ansible_distribution_release != "xenial"
 
 - name: Add Varnish apt key.
   apt_key:
     url: https://repo.varnish-cache.org/GPG-key.txt
+    validate_certs: False
     state: present
   when: ansible_distribution_release != "xenial"
 
